@@ -6,7 +6,7 @@ class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=False, nullable=False)
-    tg_chat_id = Column(Integer, unique=True, nullable=False)
+    chat_id = Column(Integer, unique=True, nullable=False)
     role = Column(String, nullable=False, default="user")
     created_at = Column(BigInteger, default=func.extract('epoch', func.now()))
 
@@ -25,6 +25,8 @@ class Hotel(Base):
 class UserLogs(Base):
     __tablename__ = "user_logs"
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, unique=False, nullable=False)
+    chat_id = Column(Integer, unique=False, nullable=False)
     action = Column(String, unique=False, nullable=False)
     created_at = Column(BigInteger, default=func.extract('epoch', func.now()))
+
+
